@@ -1,5 +1,5 @@
 (text) => text.replace("</body>", `<script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('load', function() {
   if (sessionStorage.getItem('dropdownSet')) return;
   var dropdown = document.getElementById('DomainDropDown');
   if (dropdown) {
