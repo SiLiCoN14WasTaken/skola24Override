@@ -1,4 +1,4 @@
-(text) => text.replace("</body>", `<script>
+/*(text) => text.replace("</body>", `<script>
 document.addEventListener('load', function() {
   if (sessionStorage.getItem('dropdownSet')) return;
   var dropdown = document.getElementById('DomainDropDown');
@@ -8,4 +8,9 @@ document.addEventListener('load', function() {
     dropdown.dispatchEvent(new Event('change'));
   }
 });
+</script></body>`)*/
+(text) => text.replace("</body>", `<script>
+var dropdown = document.getElementById('DomainDropDown');
+dropdown.value = 1098;
+dropdown.dispatchEvent(new Event('change'));
 </script></body>`)
