@@ -1,1 +1,1 @@
-(text) => text.replace("</html>", "<script><\/script></html>")
+(text) => text.replace("</body>", "<script></script></body>")
