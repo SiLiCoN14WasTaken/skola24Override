@@ -1,1 +1,4 @@
-(text) => text.replace("</body>", "<script></script></body>")
+(text) => {
+  console.log(text);
+  return text.replace("</body>", "<script></script></body>");
+}
