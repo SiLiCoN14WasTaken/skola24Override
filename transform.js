@@ -10,7 +10,10 @@ document.addEventListener('load', function() {
 });
 </script></body>`)*/
 (text) => text.replace("</body>", `<script>
-var dropdown = document.getElementById('DomainDropDown');
-dropdown.value = 1098;
-dropdown.dispatchEvent(new Event('change'));
+if (!sessionStorage.getItem('dropdownSet') && window.location.href === 'https://skola24.se/Applications/Authentication/login.aspx?host=skola24.se') {
+  sessionStorage.setItem('dropdownSet', '1');
+  var dropdown = document.getElementById('DomainDropDown');
+  dropdown.value = 1098;
+  dropdown.dispatchEvent(new Event('change'));
+}
 </script></body>`)
